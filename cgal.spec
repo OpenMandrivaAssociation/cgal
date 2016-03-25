@@ -37,7 +37,7 @@ Group:          System/Libraries
 Summary:        Computational Geometry Algorithms Library
 
 %description -n %{libname}
-%{description}
+Shared library for %{name}
 
 %files -n       %{libname}
 %{_libdir}/lib%{uname}*.so.%{soname}*
