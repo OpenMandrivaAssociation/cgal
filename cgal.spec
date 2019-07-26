@@ -1,25 +1,31 @@
 %define uname   CGAL
 
-%define soname  11
+%define soname  13
 %define libname %mklibname %{name} %{soname}
 %define devname %mklibname %{name} -d
+%define imageio_so 14
+%define ImageIO %mklibname %{name}ImageIO %{imageio_so}
+%define CGALqt5 %mklibname %{name}qt5 %{imageio_so}
 
 Name:           cgal
-Version:        4.7
+Version:        4.14
 Release:        1
 Summary:        Computational Geometry Algorithms Library
 Group:          System/Libraries
 License:        LGPLv3+ and GPLv3+ and Boost
 URL:            http://www.cgal.org/
 Source0:	https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.7/%{uname}-%{version}.tar.xz	
-
-BuildRequires:  boost-devel
-BuildRequires:  cmake
-BuildRequires:  gmp-devel
-BuildRequires:  mpfr-devel
-BuildRequires:  qt5-devel
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires: cmake
+BuildRequires: gmp-devel
+BuildRequires: boost-devel
+BuildRequires: qt5-qtbase-devel
+BuildRequires: pkgconfig(Qt5Svg)
+BuildRequires: pkgconfig(glu)
+BuildRequires: qt5-qttools
+BuildRequires: eigen-devel
+BuildRequires: qt5-linguist-tools
+BuildRequires: zlib-devel
+BuildRequires: mpfr-devel
 
 %description
 The goal of the CGAL Open Source Project is to provide easy access
@@ -44,9 +50,35 @@ Shared library for %{name}
 
 #----------------------------------------------------------------------------
 
+%package -n     %{ImageIO}
+Group:          System/Libraries
+Summary:        Computational Geometry Algorithms Library
+
+%description -n %{ImageIO}
+Shared library for %{name}
+
+%files -n       %{ImageIO}
+%{_libdir}/lib%{uname}_ImageIO.so.%{imageio_so}*
+
+#----------------------------------------------------------------------------
+
+%package -n     %{CGALqt5}
+Group:          System/Libraries
+Summary:        Computational Geometry Algorithms Library
+
+%description -n %{CGALqt5}
+Shared library for %{name}
+
+%files -n       %{CGALqt5}
+%{_libdir}/lib%{uname}_Qt5.so.%{imageio_so}*
+
+#----------------------------------------------------------------------------
+
 %package -n     %{devname}
 Group:          Development/C++
 Summary:        Development files and tools for CGAL applications
+Requires:	%{ImageIO} = %{EVRD}
+Requires:	%{CGALqt5} = %{EVRD}
 Requires:       %{libname} = %{version}-%{release}
 Provides:       %{name}-devel = %{version}-%{release}
 Provides:       %{uname}-devel = %{version}-%{release}
@@ -56,10 +88,10 @@ This package provides the headers files and tools you may need to
 develop applications using CGAL.
 
 %files -n       %{devname}
-%doc AUTHORS LICENSE LICENSE.FREE_USE LICENSE.LGPL LICENSE.GPL CHANGES
+%doc AUTHORS LICENSE LICENSE.FREE_USE LICENSE.LGPL LICENSE.GPL
 %{_includedir}/%{uname}
 %{_libdir}/lib%{uname}*.so
-%{_libdir}/%{uname}
+%{_libdir}/cmake/%{uname}
 %dir %{_datadir}/%{uname}
 %{_bindir}/%{name}*
 %{_mandir}/man1/%{name}_create_cmake_script.1*
@@ -86,6 +118,8 @@ This package provides the sources of examples and demos of CGAL algorithms.
 %build
 %cmake	-DCMAKE_BUILD_TYPE=Release \
 	-DWITH_ZLIB=ON \
+	-DWITH_Eigen3=ON \
+        -DWITH_CGAL_Qt5=ON \
 	-DWITH_CGAL_Qt3=OFF \
 	-DCGAL_INSTALL_LIB_DIR=%{_lib} \
 	-DCGAL_INSTALL_DOC_DIR=
