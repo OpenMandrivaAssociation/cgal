@@ -48,7 +48,7 @@ Summary:        Computational Geometry Algorithms Library
 Shared library for %{name}
 
 %files -n       %{libname}
-#{_libdir}/lib%{uname}*.so.%{soname}*
+%{_libdir}/lib%{uname}*.so.%{soname}*
 
 #----------------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ Summary:        Computational Geometry Algorithms Library
 Shared library for %{name}
 
 %files -n       %{ImageIO}
-#{_libdir}/lib%{uname}_ImageIO.so.%{imageio_so}*
+%{_libdir}/lib%{uname}_ImageIO.so.%{imageio_so}*
 
 #----------------------------------------------------------------------------
 
@@ -72,7 +72,7 @@ Summary:        Computational Geometry Algorithms Library
 Shared library for %{name}
 
 %files -n       %{CGALqt5}
-#{_libdir}/lib%{uname}_Qt5.so.%{imageio_so}*
+%{_libdir}/lib%{uname}_Qt5.so.%{imageio_so}*
 
 #----------------------------------------------------------------------------
 
@@ -92,7 +92,7 @@ develop applications using CGAL.
 %files -n       %{devname}
 %doc AUTHORS LICENSE LICENSE.FREE_USE LICENSE.LGPL LICENSE.GPL
 %{_includedir}/%{uname}
-#{_libdir}/lib%{uname}*.so
+%{_libdir}/lib%{uname}*.so
 %{_libdir}/cmake/%{uname}
 %dir %{_datadir}/%{uname}
 %{_bindir}/%{name}*
