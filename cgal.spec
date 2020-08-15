@@ -1,3 +1,5 @@
+%global debug_package %{nil}
+
 %define uname   CGAL
 
 %define soname  13
