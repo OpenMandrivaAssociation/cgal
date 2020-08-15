@@ -90,7 +90,7 @@ develop applications using CGAL.
 %files -n       %{devname}
 %doc AUTHORS LICENSE LICENSE.FREE_USE LICENSE.LGPL LICENSE.GPL
 %{_includedir}/%{uname}
-%{_libdir}/lib%{uname}*.so
+#{_libdir}/lib%{uname}*.so
 %{_libdir}/cmake/%{uname}
 %dir %{_datadir}/%{uname}
 %{_bindir}/%{name}*
