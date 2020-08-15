@@ -8,13 +8,13 @@
 %define CGALqt5 %mklibname %{name}qt5 %{imageio_so}
 
 Name:           cgal
-Version:        4.14
-Release:        4
+Version:        5.0.3
+Release:        1
 Summary:        Computational Geometry Algorithms Library
 Group:          System/Libraries
 License:        LGPLv3+ and GPLv3+ and Boost
 URL:            http://www.cgal.org/
-Source0:	https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.7/%{uname}-%{version}.tar.xz	
+Source0:	https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-%{version}/%{uname}-%{version}.tar.xz
 BuildRequires: cmake
 BuildRequires: gmp-devel
 BuildRequires: boost-devel
