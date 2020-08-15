@@ -119,6 +119,7 @@ This package provides the sources of examples and demos of CGAL algorithms.
 
 %build
 %cmake	-DCMAKE_BUILD_TYPE=Release \
+	-DCGAL_HEADER_ONLY=OFF \
 	-DWITH_ZLIB=ON \
 	-DWITH_Eigen3=ON \
         -DWITH_CGAL_Qt5=ON \
