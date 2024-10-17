@@ -13,7 +13,7 @@ Release:        6
 Summary:        Computational Geometry Algorithms Library
 Group:          System/Libraries
 License:        LGPLv3+ and GPLv3+ and Boost
-URL:            http://www.cgal.org/
+URL:            https://www.cgal.org/
 Source0:	https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-%{version}/%{uname}-%{version}.tar.xz
 BuildRequires: cmake
 BuildRequires: gmp-devel
