@@ -20,7 +20,7 @@
 
 Summary:        Computational Geometry Algorithms Library
 Name:           cgal
-Version:        6.0.1
+Version:        6.1.1
 Release:        1
 Group:          System/Libraries
 License:        LGPLv3+ and GPLv3+ and Boost
